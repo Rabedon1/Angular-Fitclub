@@ -1,0 +1,22 @@
+<form (submit)="registrar(); $event.preventDefault()" class="register-form">
+  <div class="register-container">
+    <h2 class="register-title">Registro de Usuario</h2>
+
+    <input type="text" [(ngModel)]="usuario.nombres" name="nombres" placeholder="Nombres" required class="input-field" />
+    <input type="text" [(ngModel)]="usuario.apellidos" name="apellidos" placeholder="Apellidos" required class="input-field" />
+    <input type="text" [(ngModel)]="usuario.cedula" name="cedula" placeholder="Cédula" class="input-field" />
+    <input type="email" [(ngModel)]="usuario.correo" name="correo" placeholder="Correo" required class="input-field" />
+    <input type="password" [(ngModel)]="usuario.contrasena" name="contrasena" placeholder="Contraseña" required class="input-field" />
+    <input type="number" [(ngModel)]="usuario.edad" name="edad" placeholder="Edad" class="input-field" />
+    <input type="text" [(ngModel)]="usuario.telefono" name="telefono" placeholder="Teléfono" class="input-field" />
+    <input type="date" [(ngModel)]="usuario.fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento" class="input-field" />
+
+    <!-- ID del rol: Puedes cambiar el valor según tu BD -->
+    <select [(ngModel)]="usuario.rol.idRol" name="rol" required class="input-field">
+      <option [ngValue]="1">Administrador</option>
+      <option [ngValue]="2">Usuario</option>
+    </select>
+
+    <button type="submit" class="register-button">Registrarse</button>
+  </div>
+</form>

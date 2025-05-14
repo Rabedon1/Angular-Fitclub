@@ -1,0 +1,25 @@
+<form (submit)="login(); $event.preventDefault()" class="login-form">
+  <div class="login-container">
+    <h2 class="login-title">Iniciar sesión</h2>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Correo electrónico"
+      required
+      class="input-field" />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Contraseña"
+      required
+      class="input-field" />
+    <button type="submit" class="login-button">Iniciar sesión</button>
+    <!-- Tu formulario de login aquí -->
+
+    <p>¿No tienes una cuenta?</p>
+   <button (click)="navigateToRegister()" class="register-link-button">Regístrate aquí</button>
+
+  </div>
+</form>
