@@ -1,25 +1,32 @@
-<form (submit)="login(); $event.preventDefault()" class="login-form">
-  <div class="login-container">
-    <h2 class="login-title">Iniciar sesión</h2>
-    <input
-      type="email"
-      [(ngModel)]="email"
-      name="email"
-      placeholder="Correo electrónico"
-      required
-      class="input-field" />
-    <input
-      type="password"
-      [(ngModel)]="password"
-      name="password"
-      placeholder="Contraseña"
-      required
-      class="input-field" />
-    <button type="submit" class="login-button">Iniciar sesión</button>
-    <!-- Tu formulario de login aquí -->
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2 class="login-title">Iniciar Sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" type="email" />
+        <mat-error *ngIf="loginForm.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('correo')?.hasError('email')">
+          Correo inválido
+        </mat-error>
+      </mat-form-field>
 
-    <p>¿No tienes una cuenta?</p>
-   <button (click)="navigateToRegister()" class="register-link-button">Regístrate aquí</button>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
 
-  </div>
-</form>
+      <button mat-raised-button color="accent" class="full-width" [disabled]="loading">
+        {{ loading ? 'Ingresando...' : 'Ingresar' }}
+      </button>
+    </form>
+    <div class="register-link">
+      <p>¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+    </div>
+  </mat-card>
+</div>
